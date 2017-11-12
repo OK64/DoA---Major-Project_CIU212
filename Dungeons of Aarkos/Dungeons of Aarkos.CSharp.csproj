@@ -219,7 +219,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\AlchemyArea.cs" />
     <Compile Include="Assets\Scripts\CameraControl.cs" />
+    <Compile Include="Assets\Scripts\DungeonGeneration.cs" />
     <Compile Include="Assets\Scripts\MainMenu.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
   </ItemGroup>
