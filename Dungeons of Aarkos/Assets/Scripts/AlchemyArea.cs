@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class AlchemyArea : MonoBehaviour
 {
-
 	void Start ()
 	{
 		
@@ -13,6 +12,7 @@ public class AlchemyArea : MonoBehaviour
 	void Update()
 	{
 		_DistanceDetection(2);
+		Utils._DepthPerception(this.gameObject);
 	}
 
 	public void _DistanceDetection(int dist)

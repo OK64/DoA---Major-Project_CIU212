@@ -14,7 +14,7 @@ public class DungeonGeneration : MonoBehaviour
 
 	void Update ()
 	{
-		
+		Utils._DepthPerception(this.gameObject);
 	}
 
 	public void _GenerateCoordinates()
