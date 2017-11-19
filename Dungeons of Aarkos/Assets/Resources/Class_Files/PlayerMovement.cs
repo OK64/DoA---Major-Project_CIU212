@@ -26,12 +26,17 @@ public class PlayerMovement : MonoBehaviour {
 	private float walkCycleTimer;
 	private bool walking;
 
+	private float fireTimer;
+	private float fireRate;
+
 	// Use this for initialization
 	void Start () 
 	{
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		walkCycleTimer = 0.25f;
 		walking = false;
+		fireTimer = 0;
+		fireRate = 4;
 	}
 	
 	// Update is called once per frame
@@ -160,13 +165,21 @@ public class PlayerMovement : MonoBehaviour {
 
 	void Attacking()
 	{
-		if(Input.GetMouseButtonDown(0))
+		if(fireTimer > 0)
 		{
-			float setRotation = 0;
-			setRotation = (Mathf.Atan2(Input.mousePosition.y - Screen.height/2, Input.mousePosition.x - Screen.width/2)*180/Mathf.PI)+90;
-			Quaternion rotation = Quaternion.Euler(0, 0, setRotation);
+			fireTimer -= Time.deltaTime*fireRate;
+		}
+		if(Input.GetMouseButton(0))
+		{
+			while(fireTimer <= 0)
+			{
+				float setRotation = 0;
+				setRotation = (Mathf.Atan2(Input.mousePosition.y - Screen.height/2, Input.mousePosition.x - Screen.width/2)*180/Mathf.PI)+90;
+				Quaternion rotation = Quaternion.Euler(0, 0, setRotation);
 			
-			Instantiate(waveAttack, transform.position, rotation);
+				Instantiate(waveAttack, transform.position, rotation);
+				fireTimer += 1;
+			}
 		}
 	}
 }

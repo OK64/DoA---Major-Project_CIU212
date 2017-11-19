@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour {
 		button1.SetActive(false);
 		button2.SetActive(false);
 		button3.SetActive(false);
-		button4.SetActive(true);
+		//button4.SetActive(true);
 		button5.SetActive(true);
 	}
 
