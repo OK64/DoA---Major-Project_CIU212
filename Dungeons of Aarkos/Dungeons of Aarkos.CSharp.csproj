@@ -230,6 +230,7 @@
     <Compile Include="Assets\Resources\Class_Files\PixelDetectable.cs" />
     <Compile Include="Assets\Resources\Class_Files\PlayerMovement.cs" />
     <Compile Include="Assets\Resources\Class_Files\Projectiles.cs" />
+    <Compile Include="Assets\Resources\Class_Files\QuestArea.cs" />
     <Compile Include="Assets\Resources\Class_Files\Shop.cs" />
     <Compile Include="Assets\Resources\Class_Files\Utils.cs" />
   </ItemGroup>

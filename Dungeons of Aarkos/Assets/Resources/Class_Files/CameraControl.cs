@@ -23,7 +23,7 @@ public class CameraControl : MonoBehaviour {
 		offset = transform.position - player.transform.position;
 		ready = true;
 	}
-	
+
 	// Update is called once per frame
 	void Update () 
 	{
