@@ -17,7 +17,7 @@ public class QuestArea:MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Utils._DistanceDetection(this.gameObject, GameObject.FindObjectOfType<PlayerMovement>().gameObject) < 2) 
+		if(Utils._DistanceDetection(this.gameObject, GameObject.FindObjectOfType<PlayerMovement>().gameObject) < 3) 
 		{
 			questButton.SetActive (true);
 		}else{
