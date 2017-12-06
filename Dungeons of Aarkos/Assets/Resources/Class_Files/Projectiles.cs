@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Projectiles:PixelDetectable
 {
+	public int damage;
 	public float moveSpeed;
 	
 	void Start()

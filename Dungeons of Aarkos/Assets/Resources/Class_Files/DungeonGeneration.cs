@@ -95,7 +95,7 @@ public class DungeonGeneration : MonoBehaviour
 			if(spacesAvailable > 0)
 			{
 				int randomDirection = (int)(Random.Range(0, spacesAvailable));
-				switch (validSpaces[randomDirection])
+				switch(validSpaces[randomDirection])
 				{
 					case 1: arr[1] -= bounds.y;
 						break;

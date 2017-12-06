@@ -24,4 +24,9 @@ public class QuestArea:MonoBehaviour
 			questButton.SetActive (false);
 		}
 	}
+
+	public void _OpenQuests()
+	{
+		
+	}
 }

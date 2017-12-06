@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerMovement : MonoBehaviour {
-
+public class PlayerMovement : MonoBehaviour
+{
 	public float moveSpeed;
 	public Sprite spriteF;
 	public Sprite spriteB;
@@ -19,15 +19,9 @@ public class PlayerMovement : MonoBehaviour {
 	public Sprite spriteRR;
 	public Sprite spriteRL;
 
-	public GameObject waveAttack;
-
 	private SpriteRenderer spriteRenderer;
-
 	private float walkCycleTimer;
 	private bool walking;
-
-	private float fireTimer;
-	private float fireRate;
 
 	// Use this for initialization
 	void Start () 
@@ -35,8 +29,6 @@ public class PlayerMovement : MonoBehaviour {
 		spriteRenderer = GetComponent<SpriteRenderer> ();
 		walkCycleTimer = 0.25f;
 		walking = false;
-		fireTimer = 0;
-		fireRate = 4;
 	}
 	
 	// Update is called once per frame
@@ -46,7 +38,6 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			Movement();
 		}
-		Attacking ();
 	}
 
 	void Movement()
@@ -160,26 +151,6 @@ public class PlayerMovement : MonoBehaviour {
 		{
 			spriteRenderer.sprite = spriteF;
 			walking = false;
-		}
-	}
-
-	void Attacking()
-	{
-		if(fireTimer > 0)
-		{
-			fireTimer -= Time.deltaTime*fireRate;
-		}
-		if(Input.GetMouseButton(0))
-		{
-			while(fireTimer <= 0)
-			{
-				float setRotation = 0;
-				setRotation = (Mathf.Atan2(Input.mousePosition.y - Screen.height/2, Input.mousePosition.x - Screen.width/2)*180/Mathf.PI)+90;
-				Quaternion rotation = Quaternion.Euler(0, 0, setRotation);
-			
-				Instantiate(waveAttack, transform.position, rotation);
-				fireTimer += 1;
-			}
 		}
 	}
 }

@@ -124,4 +124,14 @@ public sealed class Utils : MonoBehaviour
 		Debug.Log(objectList[0].GetType());
 		return GameObject.Find(objectList[0].name);
 	}
+
+	public static bool _InUIBounds(Vector3 point, RectTransform uiObj)
+	{
+		if(point.x > uiObj.gameObject.transform.position.x-uiObj.sizeDelta.x/2*uiObj.gameObject.transform.localScale.x && point.x < uiObj.gameObject.transform.position.x+uiObj.sizeDelta.x/2*uiObj.gameObject.transform.localScale.x && point.y > uiObj.gameObject.transform.position.y-uiObj.sizeDelta.y/2*uiObj.gameObject.transform.localScale.y && point.y < uiObj.gameObject.transform.position.y+uiObj.sizeDelta.y/2*uiObj.gameObject.transform.localScale.y)
+		{
+			return true;
+		}else{
+			return false;
+		}
+	}
 }
