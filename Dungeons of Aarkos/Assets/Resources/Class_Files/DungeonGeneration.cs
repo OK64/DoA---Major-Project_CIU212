@@ -18,6 +18,7 @@ public class DungeonGeneration : MonoBehaviour
 		room1 = new GameObject();
 		room1.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Dungeons/Rooms/Dungeon_Wall_1");
 		room1.AddComponent<PixelDetectable>().sourceTex = Resources.Load<Texture2D>("Sprites/Dungeons/Rooms/Dungeon_Wall_1");
+		room1.SetActive(false);
 
 		floor1 = new GameObject();
 		floor1.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Dungeons/Rooms/Dungeon_Floor_1");
@@ -121,9 +122,11 @@ public class DungeonGeneration : MonoBehaviour
 		for(int i = 0; i < coordArray.Length; i++)
 		{
 			//UE_LOG(MyLog, Warning, TEXT("Vector Array x%d, y%d"), coordArray[i][0], coordArray[i][1]);
-		
+
 			string spritePath;
+			string colliderPath;
 			spritePath = "Sprites/Dungeons/Rooms/Closed_Wall_1";
+			colliderPath = "Prefabs/Wall Colliders/Closed_Wall_Collider";
 			float rotation = 0;
 			if(i == 0)
 			{
@@ -139,6 +142,7 @@ public class DungeonGeneration : MonoBehaviour
 				if(coordArray[i-1][0] != coordArray[i+1][0] && coordArray[i-1][1] != coordArray[i+1][1])
 				{
 					spritePath = "Sprites/Dungeons/Rooms/90deg_Wall_1";
+					colliderPath = "Prefabs/Wall Colliders/90deg_Wall_Collider";
 					bool prev = false;
 					bool after = false;
 					if (coordArray[i - 1][0] == coordArray[i][0])
@@ -198,33 +202,40 @@ public class DungeonGeneration : MonoBehaviour
 				}else if(coordArray[i - 1][0] == coordArray[i+1][0])
 				{
 					spritePath = "Sprites/Dungeons/Rooms/Linear_Wall_1";
+					colliderPath = "Prefabs/Wall Colliders/Linear_Wall_Collider";
 				}else if(coordArray[i - 1][1] == coordArray[i+1][1])
 				{
 					spritePath = "Sprites/Dungeons/Rooms/Linear_Wall_1";
+					colliderPath = "Prefabs/Wall Colliders/Linear_Wall_Collider";
 				}
 			}else{
 				//INSERT CLOSED BLOCK AT END
 				float diffX = coordArray[i][0] - coordArray[i-1][0];
 				float diffY = coordArray[i][1] - coordArray[i-1][1];
-
 				rotation = (Mathf.Atan2(diffY, diffX)*(180/Mathf.PI))+90;
 			}
 			
 			//room1.GetComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(spritePath);
 			//room1.GetComponent<PixelDetectable>().sourceTex = Resources.Load<Texture2D>(spritePath);
 			
-			GameObject room = new GameObject();
+			GameObject room = Instantiate(new GameObject(), transform.position, transform.rotation);
 			room.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>(spritePath);
 			room.AddComponent<PixelDetectable>().sourceTex = Resources.Load<Texture2D>(spritePath);
+			room.transform.position = new Vector3(coordArray[i][0], coordArray[i][1], 0);
+			room.transform.eulerAngles = new Vector3(0, 0, rotation);
+
+			GameObject collider = Instantiate(Resources.Load(colliderPath) as GameObject, room.transform.position, room.transform.rotation);
 
 			GameObject floor = new GameObject();
 			floor.AddComponent<SpriteRenderer>().sprite = Resources.Load<Sprite>("Sprites/Dungeons/Rooms/Dungeon_Floor_1");
 			floor.transform.parent = room.transform;
 			floor.transform.localPosition = new Vector3(0, 0, 1);
 
-			//room = Instantiate(room1, transform.position, transform.rotation).gameObject;
-			room.transform.position = new Vector3(coordArray[i][0], coordArray[i][1], 0);
-			room.transform.eulerAngles = new Vector3(0, 0, rotation);
+			if(i+1 == coordArray.Length)
+			{
+				GameObject dummy = Instantiate(Resources.Load<GameObject>("Prefabs/Dummy"), room.transform.position, transform.rotation);
+				//dummy.transform.parent = this.gameObject.transform.parent;
+			}
 		}
 	}
 }

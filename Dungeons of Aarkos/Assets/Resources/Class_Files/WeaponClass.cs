@@ -27,9 +27,11 @@ public class WeaponClass:MonoBehaviour//EntityCLASS inheritence yet to be determ
 			float setRotation = 0;
 			setRotation = (Mathf.Atan2(Input.mousePosition.y - Screen.height/2, Input.mousePosition.x - Screen.width/2)*180/Mathf.PI)+90;
 			Quaternion rotation = Quaternion.Euler(0, 0, setRotation);
-				
+			
 			GameObject bullet = new GameObject();
 			bullet.AddComponent<SpriteRenderer>().sprite = bulletSprite;
+			//Color[] color = bulletSprite.texture.GetPixels((int)bulletSprite.textureRect.x, (int)bulletSprite.textureRect.y, (int)bulletSprite.textureRect.width, (int)bulletSprite.textureRect.height);
+			//Texture2D texture = new Texture2D((int)bulletSprite.rect.width, (int)bulletSprite.rect.height); texture.SetPixels(color);
 			bullet.AddComponent<Projectiles>().sourceTex = bulletSprite.texture;
 			bullet.GetComponent<Projectiles>().damage = damage;
 			bullet.GetComponent<Projectiles>().moveSpeed = 0.015f;

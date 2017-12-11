@@ -18,13 +18,10 @@ public sealed class Utils : MonoBehaviour
 
 	public static Vector2[] _PixelCoords(Texture2D texture)
 	{
-		//Debug.Log(gameObject.GetComponent<SpriteRenderer>().sprite.);
-		//int[][] coordArray = {};
 		Vector2[] pixelCoords = new Vector2[1];
 		Vector2[] DS = pixelCoords;
 		int index = 0;
 		Color[] pix = texture.GetPixels(0, 0, texture.width, texture.height);
-		//Debug.Log("Dimension Scale: *"+Mathf.Sqrt(pix.Length));
 		for(int i = 0; i < pix.Length; i++)
 		{
 			if(pix[i][3] == 1)
@@ -42,19 +39,11 @@ public sealed class Utils : MonoBehaviour
 				pixelCoords[index++] = new Vector2(((i/(Mathf.Sqrt(pix.Length))) - (int)(i/(Mathf.Sqrt(pix.Length))))*(Mathf.Sqrt(pix.Length)), (int)(i/(Mathf.Sqrt(pix.Length))));
 			}
 		}
-
-		/*Debug.Log("Pixel Count: "+pixelCoords.Length);
-		for(int n = 0; n < pixelCoords.Length; n++)
-		{
-			Debug.Log(pixelCoords[n]);
-		}*/
-
 		return pixelCoords;
 	}
 
 	public static Vector2[] _PixelsToWorld(PixelDetectable sourceObject)
 	{
-		//Vector2[] pixelCoords = _PixelCoords(sourceObject.sourceTex);
 		Vector2[] pixelCoords = new Vector2[sourceObject.pixelCoords.Length];
 		for(int i = 0; i < pixelCoords.Length; i++)
 		{
@@ -64,7 +53,6 @@ public sealed class Utils : MonoBehaviour
 			pixelCoords[i][1] += sourceObject.pixelCoords[i][1]/100;
 			pixelCoords[i][0] -= (sourceObject.sourceTex.width*0.01f)*0.5f;
 			pixelCoords[i][1] -= (sourceObject.sourceTex.height*0.01f)*0.5f;
-			//pixelCoords[i] = sourceObject.transform.TransformPoint(pixelCoords[i]);
 			pixelCoords[i][0] = (float)((int)(pixelCoords[i][0]*100))/100;
 			pixelCoords[i][1] = (float)((int)(pixelCoords[i][1]*100))/100;
 		}
@@ -107,7 +95,7 @@ public sealed class Utils : MonoBehaviour
 	{
 		int index = 0;
 		if(objectList.Length > 1) {
-			while(index < objectList.Length) {
+			while(index < objectList.Length){
 				float dist1 = _DistanceDetection(targetObject, (GameObject)objectList[index]);
 				float dist2 = _DistanceDetection(targetObject, (GameObject)objectList[index+1]);
 				if(dist1 > dist2) {
@@ -127,11 +115,13 @@ public sealed class Utils : MonoBehaviour
 
 	public static bool _InUIBounds(Vector3 point, RectTransform uiObj)
 	{
-		if(point.x > uiObj.gameObject.transform.position.x-uiObj.sizeDelta.x/2*uiObj.gameObject.transform.localScale.x && point.x < uiObj.gameObject.transform.position.x+uiObj.sizeDelta.x/2*uiObj.gameObject.transform.localScale.x && point.y > uiObj.gameObject.transform.position.y-uiObj.sizeDelta.y/2*uiObj.gameObject.transform.localScale.y && point.y < uiObj.gameObject.transform.position.y+uiObj.sizeDelta.y/2*uiObj.gameObject.transform.localScale.y)
+		if(uiObj.gameObject.activeSelf)
 		{
-			return true;
-		}else{
-			return false;
+			if(point.x > uiObj.gameObject.transform.position.x-uiObj.sizeDelta.x/2*uiObj.gameObject.transform.localScale.x && point.x < uiObj.gameObject.transform.position.x+uiObj.sizeDelta.x/2*uiObj.gameObject.transform.localScale.x && point.y > uiObj.gameObject.transform.position.y-uiObj.sizeDelta.y/2*uiObj.gameObject.transform.localScale.y && point.y < uiObj.gameObject.transform.position.y+uiObj.sizeDelta.y/2*uiObj.gameObject.transform.localScale.y)
+			{
+				return true;
+			}
 		}
+		return false;
 	}
 }

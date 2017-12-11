@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour {
 	public GameObject button4;
 	public GameObject button5;
 	public GameObject button6;
-	public GameObject text1;
+	public GameObject instruct;
 	public bool instructions = false;
 
 	void Awake()
@@ -20,7 +20,7 @@ public class MainMenu : MonoBehaviour {
 		button4.SetActive(false);
 		button5.SetActive(false);
 		button6.SetActive(false);
-		text1.SetActive (false);
+		instruct.SetActive (false);
 	}
 	// Use this for initialization
 	void Start () {
@@ -61,7 +61,7 @@ public class MainMenu : MonoBehaviour {
 			button2.SetActive (false);
 			button3.SetActive (false);
 			button6.SetActive(true);
-			text1.SetActive (true);
+			instruct.SetActive (true);
 			instructions = true;
 		}
 		else
@@ -70,7 +70,7 @@ public class MainMenu : MonoBehaviour {
 			button2.SetActive (true);
 			button3.SetActive (true);
 			button6.SetActive(false);
-			text1.SetActive (false);
+			instruct.SetActive (false);
 			instructions = false;
 		}
 	}

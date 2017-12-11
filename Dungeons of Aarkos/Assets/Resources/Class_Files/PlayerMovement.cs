@@ -18,25 +18,32 @@ public class PlayerMovement : MonoBehaviour
 	public Sprite spriteLL;
 	public Sprite spriteRR;
 	public Sprite spriteRL;
+	public bool active;
 
 	private SpriteRenderer spriteRenderer;
 	private float walkCycleTimer;
 	private bool walking;
-
-	// Use this for initialization
-	void Start () 
+	
+	void OnAwake()
 	{
-		spriteRenderer = GetComponent<SpriteRenderer> ();
 		walkCycleTimer = 0.25f;
 		walking = false;
+		active = true;
+	}
+
+	void Start()
+	{
+		spriteRenderer = GetComponent<SpriteRenderer>();
 	}
 	
-	// Update is called once per frame
 	void Update ()
 	{
-		if(Input.anyKey || walking)
+		if(active)
 		{
-			Movement();
+			if(Input.anyKey || walking)
+			{
+				Movement();
+			}
 		}
 	}
 

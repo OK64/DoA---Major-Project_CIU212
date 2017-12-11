@@ -15,7 +15,7 @@ public class QuestArea:MonoBehaviour
 	{}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update() 
 	{
 		if(Utils._DistanceDetection(this.gameObject, GameObject.FindObjectOfType<PlayerMovement>().gameObject) < 3) 
 		{
@@ -25,8 +25,8 @@ public class QuestArea:MonoBehaviour
 		}
 	}
 
-	public void _OpenQuests()
+	public void _ToggleQuestUI(bool state)
 	{
-		
+		GameObject.FindObjectOfType<Canvas>().transform.Find("Quest_UI").gameObject.SetActive(state);
 	}
 }

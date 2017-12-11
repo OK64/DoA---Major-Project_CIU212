@@ -113,6 +113,7 @@ MonoBehaviour:
   spriteLL: {fileID: 21300000, guid: f99edd5a5e37d1745b4f132c3f878b66, type: 3}
   spriteRR: {fileID: 21300000, guid: 004d93ed704f3b048a027b2256741425, type: 3}
   spriteRL: {fileID: 21300000, guid: 9cd8a854baa89e0469336dbb2bf34d6e, type: 3}
+  active: 1
 --- !u!114 &114589196250239768
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,7 +125,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf205fa2a775a204e8f87268cdf14f08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UICursor: 0
 --- !u!212 &212593105867506680
 SpriteRenderer:
   m_ObjectHideFlags: 1

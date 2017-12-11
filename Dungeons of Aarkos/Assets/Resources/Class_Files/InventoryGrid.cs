@@ -70,7 +70,6 @@ public class InventoryGrid:MonoBehaviour
 				}
 				if(inventory[i] == null || inventory[i] != null && inventory[i].transform.parent != this.gameObject.transform)
 				{
-					Debug.Log("added to inventory");
 					item.transform.SetParent(gameObject.transform);
 					item.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
 					item.transform.position = transform.GetChild(0).transform.position + new Vector3((i - ((int)(i/4))*4)*posScaleX, -((int)(i/4))*posScaleX, 0);

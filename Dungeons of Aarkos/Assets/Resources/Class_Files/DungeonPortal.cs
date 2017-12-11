@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class DungeonPortal : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class DungeonPortal : MonoBehaviour
 
 	void Awake()
 	{
+		enterButton = GameObject.FindObjectOfType<Canvas>().transform.Find("Game_UI").Find("Enter Button").gameObject;
 		if(enterButton != null)
 		{
 			enterButton.SetActive(false);

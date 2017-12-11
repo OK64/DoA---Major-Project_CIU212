@@ -43,7 +43,7 @@ public class ControlPort:MonoBehaviour
 
 		//UnityEngine.Debug.Log(Path.GetFullPath(Path.Combine(Application.dataPath, @"..")));
 		//System.Diagnostics.Process.Start(Path.GetFullPath(Path.Combine(Application.dataPath, @".."))+"/response.bat");
-		System.Diagnostics.Process.Start(Path.GetFullPath(Path.Combine(Application.dataPath, @".."))+"/Library/response.bat");
+		//System.Diagnostics.Process.Start(Path.GetFullPath(Path.Combine(Application.dataPath, @".."))+"/Library/response.bat");
 	}
 	
 	void Update ()
@@ -69,9 +69,8 @@ public class ControlPort:MonoBehaviour
 		}else{
 			if(Input.GetMouseButton(0) && GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<EquipmentGrid>().equipmentArray[0] as GameObject != null && GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<EquipmentGrid>().equipmentArray[0].transform.parent == FindObjectOfType<EquipmentGrid>().transform)
 			{
-				//Reference to slot one of EquipmentGrid
 				//GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<EquipmentGrid>().transform.GetChild(0).GetComponentInChildren<WeaponClass>()._WeaponLogic();//Redundant
-				GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<EquipmentGrid>().equipmentArray[0].GetComponent<WeaponClass>()._WeaponLogic();//To be used when necessary
+				GameObject.FindObjectOfType<Canvas>().GetComponentInChildren<EquipmentGrid>().equipmentArray[0].GetComponent<WeaponClass>()._WeaponLogic();
 			}
 		}
 	}

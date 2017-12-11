@@ -33,17 +33,23 @@ public class Projectiles:PixelDetectable
 			}
 		}*/
 		
-		PixelDetectable[] pixList = GameObject.FindObjectsOfType<PixelDetectable>();
+
+		//Commented out as it is causes large fps drops
+		/*PixelDetectable[] pixList = GameObject.FindObjectsOfType<PixelDetectable>();
 		foreach(PixelDetectable obj in pixList)
 		{
 			if(obj != this && obj.name != this.name && Utils._PixelDetection(this, obj))
 			{
 				Destroy(this.gameObject);
 			}
-		}
+		}*/
 
 		if(Physics2D.Raycast(gameObject.transform.position, new Vector2(0, 0)) && Physics2D.Raycast(gameObject.transform.position, new Vector2(0, 0)).collider.gameObject != GameObject.FindObjectOfType<PlayerMovement>().gameObject)
 		{
+			if(GameObject.FindObjectOfType<Dummy>() != null && Physics2D.Raycast(gameObject.transform.position, new Vector2(0, 0)).collider.gameObject == GameObject.FindObjectOfType<Dummy>().gameObject)
+			{
+				GameObject.FindObjectOfType<Dummy>().damageHue += 1;
+			}
 			Destroy(gameObject);
 		}
 
